@@ -31,7 +31,7 @@
     align-items: center;
     margin-bottom: 20px;
     flex-wrap: wrap;
-
+    gap: 13px;
     row-gap: 13px;
   }
 
@@ -48,6 +48,5 @@
   }
 
   button {
-    margin-left: 25px;
   }
 </style>
