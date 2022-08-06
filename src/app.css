@@ -133,7 +133,7 @@ table {
 }
 button {
   background: white;
-  width: 120px;
+  min-width: 120px;
   color: black;
   padding: 8px 5px;
   border: 1px solid #333;
@@ -151,4 +151,9 @@ h1 {
   font-size: 20px;
   width: 100%;
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.bold {
+  font-weight: bold;
 }

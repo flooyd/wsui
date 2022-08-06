@@ -1,5 +1,15 @@
+<script>
+  import showHome from "../stores/home";
+  import loginOrRegister from "../stores/auth";
+
+  const clickHome = () => {
+    $showHome = true;
+    $loginOrRegister = null;
+  };
+</script>
+
 <nav>
-  <div class="title">wsui</div>
+  <div class="title" on:click={() => clickHome()}>wsui</div>
   <div class="settings">settings</div>
 </nav>
 
@@ -22,6 +32,7 @@
     font-family: "Noto Sans", sans-serif;
     text-align: center;
     width: fit-content;
+    cursor: pointer;
   }
 
   .settings {
