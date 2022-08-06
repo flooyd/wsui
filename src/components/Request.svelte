@@ -46,7 +46,4 @@
   .property {
     padding: 8px;
   }
-
-  button {
-  }
 </style>
