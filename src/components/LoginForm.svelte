@@ -25,25 +25,25 @@
   }
 </script>
 
-<h1>Login to wsui</h1>
-<p>Need an account? <span class="click">Register</span></p>
+<h1>login to wsui</h1>
+<p>Need an account? <span class="click">register</span></p>
 <form on:submit={(e) => handleSubmit(e)}>
   <div class="field">
-    <label for="email">Email</label>
+    <label for="email">email</label>
     <input type="email" bind:value={email} />
     {#if emailError}
       <p class="error">{emailError}</p>
     {/if}
   </div>
   <div class="field">
-    <label for="password">Password</label>
+    <label for="password">password</label>
     <input type="password" bind:value={password} />
     {#if passwordError}
       <p class="error">{passwordError}</p>
     {/if}
   </div>
-  <button type="submit">Login</button>
-  <button type="reset" on:click={() => ($loginOrRegister = null)}>Cancel</button
+  <button type="submit">login</button>
+  <button type="reset" on:click={() => ($loginOrRegister = null)}>cancel</button
   >
 </form>
 

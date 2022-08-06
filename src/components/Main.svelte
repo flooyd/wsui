@@ -6,8 +6,8 @@
 
 <main>
   {#if !$loginOrRegister}
-    <h1>Welcome to wsui 👋</h1>
-    <p>Create and save websocket requests, events, and listeners.</p>
+    <h1>welcome to wsui 👋</h1>
+    <p>create and save websocket requests, events, and listeners.</p>
     <Auth />
   {/if}
   {#if $loginOrRegister}

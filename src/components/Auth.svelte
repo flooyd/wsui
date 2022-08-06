@@ -3,14 +3,14 @@
 </script>
 
 <div class="auth">
-  <button class="google">Login with Google</button>
+  <button class="google">login with Google</button>
 </div>
 <div class="or">or</div>
 <div class="auth">
   <button on:click={() => ($loginOrRegister = "register")}
-    >Create Account</button
+    >create Account</button
   >
-  <button on:click={() => ($loginOrRegister = "login")}>Login</button>
+  <button on:click={() => ($loginOrRegister = "login")}>login</button>
 </div>
 
 <style>
