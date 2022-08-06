@@ -36,8 +36,6 @@
 
   .settings:hover {
     background: #55f;
-    color: #333;
     color: white;
-    border-color: white;
   }
 </style>
