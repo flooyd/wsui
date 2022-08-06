@@ -8,8 +8,10 @@
 
 <div class="header">
   <h1>request</h1>
-  <div><button>connect</button></div>
-  <div><button on:click={() => requests()}>requests</button></div>
+  <div class="options">
+    <button>connect</button>
+    <button on:click={() => requests()}>requests</button>
+  </div>
 </div>
 <div class="request">
   <div class="property">
@@ -27,8 +29,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     margin-bottom: 20px;
+    flex-wrap: wrap;
+
+    row-gap: 13px;
   }
 
   .header h1 {
