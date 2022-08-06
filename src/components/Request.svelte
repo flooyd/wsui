@@ -6,25 +6,35 @@
   };
 </script>
 
-<h1>
-  request
-  <span><button>connect</button></span>
-  <span><button on:click={() => requests()}>requests</button></span>
-</h1>
+<div class="header">
+  <h1>request</h1>
+  <div><button>connect</button></div>
+  <div><button on:click={() => requests()}>requests</button></div>
+</div>
 <div class="request">
-  <div class="header">
-    <div class="property">
-      <span class="bold">name: </span>
-      {$currentRequest.name}
-    </div>
-    <div class="property">
-      <span class="bold">ws: </span>
-      {$currentRequest.ws}
-    </div>
+  <div class="property">
+    <span class="bold">name: </span>
+    {$currentRequest.name}
+  </div>
+  <div class="property">
+    <span class="bold">ws: </span>
+    {$currentRequest.ws}
   </div>
 </div>
 
 <style>
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .header h1 {
+    width: fit-content;
+    margin: 0px;
+  }
   .request {
     background: white;
   }
