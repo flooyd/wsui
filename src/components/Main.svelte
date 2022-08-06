@@ -6,11 +6,8 @@
 
 <main>
   {#if !$loginOrRegister}
-    <h1>Welcome 👋</h1>
-    <p>
-      wsui allows you to create and save websocket requests, events, and
-      listeners.
-    </p>
+    <h1>Welcome to wsui 👋</h1>
+    <p>Create and save websocket requests, events, and listeners.</p>
     <Auth />
   {/if}
   {#if $loginOrRegister}
@@ -27,6 +24,5 @@
   p {
     margin: 20px 0px;
     text-align: center;
-    font-weight: bold;
   }
 </style>
