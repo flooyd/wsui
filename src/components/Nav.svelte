@@ -31,6 +31,7 @@
     border-radius: 5px;
     margin-left: 25px;
     cursor: pointer;
+    border: 1px solid #333;
   }
 
   .settings:hover {
