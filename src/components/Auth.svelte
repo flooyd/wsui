@@ -31,17 +31,9 @@
   }
 
   button {
-    background: white;
-    width: 120px;
-    border-color: #333;
-    padding: 8px;
+    min-width: 120px;
+    padding: 8px 5px;
     margin-right: 13px;
-  }
-
-  button:hover {
-    color: white;
-    background: #333;
-    cursor: pointer;
   }
 
   .or {

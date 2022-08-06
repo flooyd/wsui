@@ -11,7 +11,7 @@
     position: fixed;
     top: 0px;
     width: 100%;
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid #333;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,6 +26,7 @@
 
   .settings {
     background: white;
+    color: black;
     padding: 5px 8px;
     border-radius: 5px;
     margin-left: 25px;
@@ -33,8 +34,8 @@
   }
 
   .settings:hover {
-    color: white;
     background: #55f;
+    color: #333;
     color: white;
     border-color: white;
   }

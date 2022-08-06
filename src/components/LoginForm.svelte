@@ -48,6 +48,13 @@
 </form>
 
 <style>
+  form {
+    border: 3px solid #333;
+    width: fit-content;
+
+    margin: 0 auto;
+  }
+
   h1 {
     font-size: 20px;
     text-align: center;
@@ -87,7 +94,7 @@
   }
 
   button {
-    margin: 13px 0px;
+    cursor: pointer;
   }
 
   label {
