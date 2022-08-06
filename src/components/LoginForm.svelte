@@ -42,9 +42,9 @@
       <p class="error">{passwordError}</p>
     {/if}
   </div>
-  <button type="submit">login</button>
   <button type="reset" on:click={() => ($loginOrRegister = null)}>cancel</button
   >
+  <button type="submit">login</button>
 </form>
 
 <style>
