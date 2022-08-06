@@ -48,6 +48,6 @@
   }
 
   button {
-    margin-left: 25px;
+    margin-right: 25px;
   }
 </style>
