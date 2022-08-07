@@ -2,13 +2,23 @@ export const data = {
   requests: [
     {
       name: "demo server",
-      ws: "wss://localhost:3000/demo",
-      events: [{ name: "sendMessage", data: "hello world" }],
-      listeners: [{ name: "receiveMessage" }],
+      ws: "ws://localhost:3000",
+      events: [
+        { name: "findAllThings" },
+        { name: "createThing" },
+        { name: "deleteThings" },
+      ],
+      listeners: [
+        { name: "findAllThings" },
+        { name: "createThing" },
+        { name: "deleteThings" },
+      ],
     },
     {
       name: "my official server",
       ws: "ws://localhost:3000/officialserver",
+      events: [],
+      listeners: [],
     },
   ],
 };
