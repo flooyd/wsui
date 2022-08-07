@@ -27,7 +27,7 @@
 
 <h1>login to wsui</h1>
 <form on:submit={(e) => handleSubmit(e)}>
-  <p>need an account? <span class="click"><button>register</button></span></p>
+  <p>need an account? <span class="click"><button>create account</button></span></p>
   <div class="field">
     <label for="email">email</label>
     <input type="email" bind:value={email} />
