@@ -26,7 +26,7 @@
 </script>
 
 <h1>login to wsui</h1>
-<p>Need an account? <span class="click">register</span></p>
+<p>need an account? <span class="click">register</span></p>
 <form on:submit={(e) => handleSubmit(e)}>
   <div class="field">
     <label for="email">email</label>
@@ -51,8 +51,12 @@
   form {
     border: 3px solid #333;
     width: fit-content;
-
+    background: white;
     margin: 0 auto;
+  }
+
+  input {
+    outline-color: black;
   }
 
   h1 {
