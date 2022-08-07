@@ -3,9 +3,11 @@
   import createClient from "../util/socket";
   import socket from "../stores/socket";
   import { onMount } from "svelte";
+  import { JsonView } from "@zerodevx/svelte-json-view";
 
   let initialized = false;
   let response = null;
+  let date = null;
 
   const requests = () => {
     $currentRequest = null;
@@ -24,9 +26,9 @@
   $: if ($socket && !initialized) {
     console.log("xd");
     $socket.on("connect", () => console.log("connected"));
-    $socket.on("createThing", (data) => console.log(data));
-    $socket.on("findAllThings", (data) => console.log(data));
-    $socket.on("deleteThings", (data) => console.log(data));
+    $socket.on("createThing", (data) => (response = data));
+    $socket.on("findAllThings", (data) => (response = data));
+    $socket.on("deleteThings", (data) => (response = data));
     initialized = true;
   }
 
@@ -34,6 +36,7 @@
     name === "createThing" ? $socket.emit(name, { blah: 7, xd: 5 }) : null;
     name === "deleteThings" ? $socket.emit(name, { number: 77 }) : null;
     name === "findAllThings" ? $socket.emit(name) : null;
+    date = new Date(Date.now());
   };
 </script>
 
@@ -67,9 +70,12 @@
       >
     {/each}
   </div>
-
-  Hello
 </div>
+
+<h1 class="response">response</h1>
+{#if response}
+  <JsonView json={response} />
+{/if}
 
 <style>
   .header {
@@ -97,5 +103,9 @@
   .eventButton {
     margin-right: 13px;
     cursor: pointer;
+  }
+
+  .response {
+    margin-top: 20px;
   }
 </style>
