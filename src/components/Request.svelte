@@ -42,10 +42,6 @@
 
 <div class="header">
   <h1>request</h1>
-  <div class="options">
-    <button>connect</button>
-    <button on:click={() => requests()}>requests</button>
-  </div>
 </div>
 <div class="request">
   <div class="property">
@@ -55,6 +51,11 @@
   <div class="property">
     <span class="bold">ws: </span>
     {$currentRequest.ws}
+  </div>
+  <div class="property">
+    <span class="bold">options: </span>
+    <button>connect</button>
+    <button on:click={() => requests()}>requests</button>
   </div>
   <div class="property">
     <span class="bold">listeners: </span>
@@ -71,16 +72,19 @@
     {/each}
   </div>
 </div>
-
-<h1 class="response">response</h1>
-{#if response}
-  <JsonView json={response} />
-{/if}
+<div class="header">
+  <h1>response</h1>
+</div>
+<div class="response">
+  {#if response}
+    <JsonView json={response} />
+  {:else}
+    <JsonView json={{ message: "click an event" }} />
+  {/if}
+</div>
 
 <style>
   .header {
-    display: flex;
-    justify-content: center;
     align-items: center;
     margin-bottom: 20px;
     flex-wrap: wrap;
@@ -92,20 +96,36 @@
     width: fit-content;
     margin: 0px;
   }
-  .request {
+
+  .request,
+  .response {
     background: white;
-  }
-
-  .property {
-    padding: 8px;
-  }
-
-  .eventButton {
-    margin-right: 13px;
-    cursor: pointer;
+    margin-bottom: 20px;
+    border: 3px solid #333;
   }
 
   .response {
-    margin-top: 20px;
+    padding: 8px;
+  }
+
+  .property {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .eventButton {
+    cursor: pointer;
+  }
+
+  .property span {
+    width: 80px;
+    display: inline-block;
+  }
+
+  .property:hover {
+    background: lightblue;
   }
 </style>

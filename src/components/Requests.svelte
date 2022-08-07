@@ -18,13 +18,11 @@
 <style>
   .name {
     background: white;
-    margin-right: 20px;
-    border-bottom: 1px solid #333;
-    padding: 8px;
+    padding: 10px;
     cursor: pointer;
   }
 
   .name:hover {
-    background: #55f;
+    background: lightblue;
   }
 </style>
