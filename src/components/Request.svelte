@@ -85,16 +85,11 @@
 
 <style>
   .header {
-    align-items: center;
     margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 13px;
-    row-gap: 13px;
   }
 
   .header h1 {
     width: fit-content;
-    margin: 0px;
   }
 
   .request,
@@ -109,7 +104,7 @@
   }
 
   .property {
-    padding: 10px;
+    padding: 8px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

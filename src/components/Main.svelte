@@ -12,9 +12,6 @@
       <h1>welcome to wsui 👋</h1>
       <p>create and save websocket requests, events, and listeners</p>
       <Auth />
-      <div class="demo">
-        <button on:click={() => ($showHome = false)}>View Demo</button>
-      </div>
     {/if}
     {#if $loginOrRegister}
       <LoginForm />
@@ -35,11 +32,6 @@
 
   p {
     margin: 20px 0px;
-    text-align: center;
-  }
-
-  .demo {
-    margin-top: 20px;
     text-align: center;
   }
 </style>
