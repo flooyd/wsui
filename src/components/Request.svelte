@@ -57,7 +57,7 @@
     </div>
     <div class="property">
       <span class="bold">options: </span>
-      <button>connect</button>
+      <button class="nocursor">connect</button>
       <button on:click={() => requests()}>requests</button>
     </div>
     <div class="property">
@@ -112,11 +112,6 @@
     gap: 8px;
   }
 
-  .eventButton {
-    cursor: pointer;
-    width: fit-content;
-  }
-
   .property span {
     width: 65px;
     display: inline-block;
@@ -124,5 +119,10 @@
 
   .property:hover {
     background: lightblue;
+  }
+
+  .nocursor {
+    background: white;
+    color: black;
   }
 </style>
