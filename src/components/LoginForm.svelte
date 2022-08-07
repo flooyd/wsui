@@ -85,6 +85,11 @@
     font-weight: bold;
   }
 
+  p.error {
+    border: none;
+    color: #55f;
+  }
+
   input {
     caret-color: black;
     padding: 3px 8px;
