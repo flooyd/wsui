@@ -45,7 +45,10 @@
 </script>
 
 <div class="container">
-  <h1>request</h1>
+  <div class="header">
+    <h1>request</h1>
+    <button>manage</button>
+  </div>
   <div class="request">
     <div class="property">
       <span class="bold">name: </span>
@@ -77,12 +80,17 @@
   </div>
 </div>
 <div class="container">
-  <h1>response</h1>
-  <div class="response">
-    <div class="json">
-      {#if response}
-        <JsonView json={response} />
-      {/if}
+  <div class="header" role="heading">
+    <h1>response</h1>
+    <button>manage</button>
+  </div>
+  <div>
+    <div class="response">
+      <div class="json">
+        {#if response}
+          <JsonView json={response} />
+        {/if}
+      </div>
     </div>
   </div>
 </div>
@@ -90,6 +98,19 @@
 <style>
   .container {
     margin: 0 auto;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .header h1 {
+    width: fit-content;
+    margin: 0px;
+    margin-right: 13px;
   }
 
   .request,
