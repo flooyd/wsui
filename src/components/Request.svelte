@@ -29,9 +29,8 @@
   }
 
   const emitEvent = (name) => {
-    name === "createThing"
-      ? $socket.emit(name, { blah: 7, xd: 5 })
-      : $socket.emit(name);
+    name === "createThing" ? $socket.emit(name, { blah: 7, xd: 5 }) : null;
+    name === "deleteThings" ? $socket.emit(name, { number: 77 }) : null;
   };
 </script>
 
