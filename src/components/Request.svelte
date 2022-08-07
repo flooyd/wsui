@@ -1,22 +1,36 @@
 <script>
-  import { currentRequest } from "../stores/requests";
+  import { currentRequest, manage } from "../stores/requests";
   import createClient from "../util/socket";
   import socket from "../stores/socket";
   import { onDestroy, onMount } from "svelte";
   import { JsonView } from "@zerodevx/svelte-json-view";
+  import ManageRequest from "./ManageRequest.svelte";
+
+  let content = {
+    text: undefined, // used when in text mode
+    json: undefined,
+  };
 
   let initialized = false;
   let response = null;
   let date = null;
+  let name,
+    ws,
+    listeners,
+    events = null;
 
   const requests = () => {
     $currentRequest = null;
     $socket = null;
   };
 
+  const manageRequest = () => {
+    $manage = true;
+  };
+
   const connect = () => {
     $socket = createClient($currentRequest.ws);
-    console.log($socket);
+    console.log("connected");
   };
 
   onMount(() => {
@@ -28,7 +42,7 @@
   });
 
   $: if ($socket && !initialized) {
-    console.log("xd");
+    $socket.on("message", () => (response = data));
     $socket.on("connect", () => (response = { message: "connected 😎" }));
     $socket.on("createThing", (data) => (response = data));
     $socket.on("findAllThings", (data) => (response = data));
@@ -42,12 +56,14 @@
     name === "findAllThings" ? $socket.emit(name) : null;
     date = new Date(Date.now());
   };
+
+  $: console.log(content);
 </script>
 
 <div class="container">
   <div class="header">
     <h1>request</h1>
-    <button>manage</button>
+    <button on:click={() => manageRequest()}>manage</button>
   </div>
   <div class="request">
     <div class="property">
@@ -79,21 +95,28 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="header" role="heading">
-    <h1>response</h1>
-    <button>manage</button>
-  </div>
-  <div>
-    <div class="response">
-      <div class="json">
-        {#if response}
-          <JsonView json={response} />
-        {/if}
+{#if !$manage}
+  <div class="container">
+    <div class="header" role="heading">
+      <h1>response</h1>
+      <button>manage</button>
+    </div>
+    <div>
+      <div class="response">
+        <div class="json">
+          <div class="editor">
+            <!-- <JSONEditor bind:content /> -->
+          </div>
+          {#if response}
+            <JsonView json={response} />
+          {/if}
+        </div>
       </div>
     </div>
   </div>
-</div>
+{:else}
+  <ManageRequest />
+{/if}
 
 <style>
   .container {
@@ -145,5 +168,9 @@
   .nocursor {
     background: white;
     color: black;
+  }
+
+  .editor {
+    margin-bottom: 13px;
   }
 </style>

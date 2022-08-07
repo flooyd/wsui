@@ -4,14 +4,19 @@
   import requests, { currentRequest } from "../stores/requests";
 
   $requests = data.requests;
-  console.log($currentRequest);
+
+  const populateCurrentRequest = (request, i) => {
+    $currentRequest = request;
+    $currentRequest.i = i;
+    console.log(request);
+  };
 </script>
 
 <h1>select a request</h1>
 
 <div class="container">
-  {#each $requests as request}
-    <div class="name" on:click={() => ($currentRequest = request)}>
+  {#each $requests as request, i}
+    <div class="name" on:click={() => populateCurrentRequest(request, i)}>
       {request.name}
     </div>
   {/each}
