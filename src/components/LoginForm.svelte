@@ -7,13 +7,13 @@
 
   function validate() {
     if (email.length === 0) {
-      emailError = "Email is required";
+      emailError = "email is required";
     } else {
       emailError = null;
     }
 
     if (password.length < 8) {
-      passwordError = "Password should be at least 8 characters";
+      passwordError = "password should be at least 8 characters";
     } else {
       passwordError = null;
     }
@@ -26,8 +26,8 @@
 </script>
 
 <h1>login to wsui</h1>
-<p>need an account? <span class="click">register</span></p>
 <form on:submit={(e) => handleSubmit(e)}>
+  <p>need an account? <span class="click"><button>register</button></span></p>
   <div class="field">
     <label for="email">email</label>
     <input type="email" bind:value={email} />
@@ -42,16 +42,21 @@
       <p class="error">{passwordError}</p>
     {/if}
   </div>
-  <button type="reset" on:click={() => ($loginOrRegister = null)}>cancel</button
-  >
-  <button type="submit">login</button>
+  <div class="buttons">
+    <button type="reset" on:click={() => ($loginOrRegister = null)}
+      >cancel</button
+    >
+    <button type="submit">login</button>
+  </div>
 </form>
 
 <style>
   form {
     border: 3px solid #333;
-    width: fit-content;
     background: white;
+    width: fit-content;
+    padding: 8px;
+    font-size: 13px;
     margin: 0 auto;
   }
 
@@ -66,30 +71,18 @@
   }
 
   p {
-    margin-top: 20px;
-    text-align: center;
+    margin-bottom: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 3px solid lightblue;
   }
 
   .error {
     margin-top: 10px;
     font-size: 10px;
     font-weight: bold;
-  }
-
-  .click {
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  .click:hover {
-    color: blue;
-  }
-
-  form {
-    width: fit-content;
-    margin: 20px auto;
-    padding: 13px;
-    flex-direction: column;
   }
 
   input {
@@ -99,15 +92,23 @@
 
   button {
     cursor: pointer;
+    min-width: 100px;
   }
 
   label {
     margin-bottom: 5px;
+    font-weight: bold;
+    width: 70px;
+    display: inline-block;
+    text-align: left;
   }
 
   .field {
-    display: flex;
-    flex-direction: column;
     margin-bottom: 13px;
+    text-align: center;
+  }
+
+  .buttons {
+    text-align: right;
   }
 </style>
