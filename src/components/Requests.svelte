@@ -9,16 +9,24 @@
 
 <h1>select a request</h1>
 
-{#each $requests as request}
-  <div class="name" on:click={() => ($currentRequest = request)}>
-    {request.name}
-  </div>
-{/each}
+<div class="container">
+  {#each $requests as request}
+    <div class="name" on:click={() => ($currentRequest = request)}>
+      {request.name}
+    </div>
+  {/each}
+</div>
 
 <style>
+  .container {
+    min-width: 50%;
+    width: fit-content;
+    margin: 0 auto;
+    border: 3px solid #333;
+  }
   .name {
     background: white;
-    padding: 10px;
+    padding: 8px;
     cursor: pointer;
   }
 

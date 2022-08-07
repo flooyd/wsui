@@ -2,7 +2,7 @@
   import { currentRequest } from "../stores/requests";
   import createClient from "../util/socket";
   import socket from "../stores/socket";
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
   import { JsonView } from "@zerodevx/svelte-json-view";
 
   let initialized = false;
@@ -23,9 +23,13 @@
     connect();
   });
 
+  onDestroy(() => {
+    $socket = null;
+  });
+
   $: if ($socket && !initialized) {
     console.log("xd");
-    $socket.on("connect", () => console.log("connected"));
+    $socket.on("connect", () => (response = { message: "connected 😎" }));
     $socket.on("createThing", (data) => (response = data));
     $socket.on("findAllThings", (data) => (response = data));
     $socket.on("deleteThings", (data) => (response = data));
@@ -40,56 +44,54 @@
   };
 </script>
 
-<div class="header">
+<div class="container">
   <h1>request</h1>
+  <div class="request">
+    <div class="property">
+      <span class="bold">name: </span>
+      {$currentRequest.name}
+    </div>
+    <div class="property">
+      <span class="bold">ws: </span>
+      {$currentRequest.ws}
+    </div>
+    <div class="property">
+      <span class="bold">options: </span>
+      <button>connect</button>
+      <button on:click={() => requests()}>requests</button>
+    </div>
+    <div class="property">
+      <span class="bold">listeners: </span>
+      {#each $currentRequest.listeners as listener}
+        <button class="eventButton nocursor">{listener.name}</button>
+      {/each}
+    </div>
+    <div class="property">
+      <span class="bold">events: </span>
+      {#each $currentRequest.events as event}
+        <button class="eventButton" on:click={() => emitEvent(event.name)}
+          >{event.name}</button
+        >
+      {/each}
+    </div>
+  </div>
 </div>
-<div class="request">
-  <div class="property">
-    <span class="bold">name: </span>
-    {$currentRequest.name}
-  </div>
-  <div class="property">
-    <span class="bold">ws: </span>
-    {$currentRequest.ws}
-  </div>
-  <div class="property">
-    <span class="bold">options: </span>
-    <button>connect</button>
-    <button on:click={() => requests()}>requests</button>
-  </div>
-  <div class="property">
-    <span class="bold">listeners: </span>
-    {#each $currentRequest.listeners as listener}
-      <button class="eventButton">{listener.name}</button>
-    {/each}
-  </div>
-  <div class="property">
-    <span class="bold">events: </span>
-    {#each $currentRequest.events as event}
-      <button class="eventButton" on:click={() => emitEvent(event.name)}
-        >{event.name}</button
-      >
-    {/each}
-  </div>
-</div>
-<div class="header">
+<div class="container">
   <h1>response</h1>
-</div>
-<div class="response">
-  {#if response}
-    <JsonView json={response} />
-  {:else}
-    <JsonView json={{ message: "click an event" }} />
-  {/if}
+  <div class="response">
+    <div class="json">
+      {#if response}
+        <JsonView json={response} />
+      {/if}
+    </div>
+  </div>
 </div>
 
 <style>
-  .header {
-    margin-bottom: 20px;
-  }
-
-  .header h1 {
+  .container {
+    min-width: 50%;
     width: fit-content;
+    margin: 0 auto;
   }
 
   .request,
@@ -99,7 +101,7 @@
     border: 3px solid #333;
   }
 
-  .response {
+  .json {
     padding: 8px;
   }
 
