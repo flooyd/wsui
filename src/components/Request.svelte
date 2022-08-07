@@ -118,7 +118,7 @@
   }
 
   .property span {
-    width: 80px;
+    width: 65px;
     display: inline-block;
   }
 
