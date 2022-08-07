@@ -25,7 +25,7 @@
   };
 
   const manageRequest = () => {
-    $manage = true;
+    $manage = !$manage;
   };
 
   const connect = () => {
@@ -84,6 +84,9 @@
       {#each $currentRequest.listeners as listener}
         <button class="eventButton nocursor">{listener.name}</button>
       {/each}
+      {#if $currentRequest.listeners.length === 0}
+        use manage to add listeners
+      {/if}
     </div>
     <div class="property">
       <span class="bold">events: </span>
@@ -92,6 +95,9 @@
           >{event.name}</button
         >
       {/each}
+      {#if $currentRequest.events.length === 0}
+        use manage to add events
+      {/if}
     </div>
   </div>
 </div>

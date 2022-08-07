@@ -3,13 +3,26 @@
 
   const objToPrepare = $currentRequest;
 
-  $: console.log(objToPrepare);
+  const removeEvent = (i) => {
+    objToPrepare.events.splice(i, 1);
+    objToPrepare = objToPrepare;
+  };
+
+  const removeListener = (i) => {
+    objToPrepare.listeners.splice(i, 1);
+    objToPrepare = objToPrepare;
+  };
+
+  const apply = () => {
+    console.log("apply");
+    $currentRequest = objToPrepare;
+  };
 </script>
 
 <div class="container">
   <div class="header" role="heading">
     <h1>manage request</h1>
-    <button>apply</button>
+    <button on:click={() => apply()}>apply</button>
     <button on:click={() => ($manage = false)}>done</button>
   </div>
   <div>
@@ -22,26 +35,30 @@
         <span class="bold">ws: </span>
         <input class="longInput" bind:value={objToPrepare.ws} />
       </div>
-      <div class="property">
+      <div class="property events">
         <span class="bold">events: </span>
         {#each objToPrepare.events as event, i}
           <div>
             <input bind:value={objToPrepare.events[i].name} />
             <button>data</button>
-            <button class="remove">X</button>
+            <button on:click={() => removeEvent(i)} class="remove">X</button>
           </div>
         {/each}
-        <button>add event</button>
+        <button class={objToPrepare.events.length === 0 ? "margin" : ""}
+          >add event</button
+        >
       </div>
-      <div class="property">
+      <div class="property events">
         <span class="bold">listeners: </span>
-        {#each objToPrepare.events as event, i}
+        {#each objToPrepare.listeners as listener, i}
           <div>
             <input bind:value={objToPrepare.listeners[i].name} />
-            <button class="remove">X</button>
+            <button on:click={() => removeListener(i)} class="remove">X</button>
           </div>
         {/each}
-        <button>add listener</button>
+        <button class={objToPrepare.listeners.length === 0 ? "margin" : ""}
+          >add listener</button
+        >
       </div>
     </div>
   </div>
@@ -84,6 +101,14 @@
     gap: 8px;
   }
 
+  .events {
+    display: block;
+  }
+
+  .events div {
+    margin-bottom: 8px;
+  }
+
   .property span {
     width: 65px;
     display: inline-block;
@@ -108,5 +133,9 @@
 
   .remove:hover {
     background: lightcoral;
+  }
+
+  .margin {
+    margin-left: 4px;
   }
 </style>
