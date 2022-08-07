@@ -24,12 +24,13 @@
     $socket.on("connect", () => console.log("connected"));
     $socket.on("createThing", (data) => console.log(data));
     $socket.on("findAllThings", (data) => console.log(data));
+    $socket.on("deleteThings", (data) => console.log(data));
     initialized = true;
   }
 
   const emitEvent = (name) => {
     name === "createThing"
-      ? $socket.emit(name, { blah: 7 })
+      ? $socket.emit(name, { blah: 7, xd: 5 })
       : $socket.emit(name);
   };
 </script>

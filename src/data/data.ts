@@ -2,7 +2,7 @@ export const data = {
   requests: [
     {
       name: "demo server",
-      ws: "ws://localhost:3000",
+      ws: "ws://floyds-gigs.herokuapp.com/",
       events: [
         { name: "findAllThings" },
         { name: "createThing" },
