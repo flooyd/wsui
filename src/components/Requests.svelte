@@ -19,8 +19,6 @@
 
 <style>
   .container {
-    min-width: 50%;
-    width: fit-content;
     margin: 0 auto;
     border: 3px solid #333;
   }

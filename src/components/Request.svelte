@@ -89,8 +89,8 @@
 
 <style>
   .container {
-    min-width: 50%;
-    width: fit-content;
+    min-width: 500px;
+
     margin: 0 auto;
   }
 

@@ -16,8 +16,6 @@
   .authContainer {
     border: 3px solid #333;
     background: white;
-    min-width: 50%;
-    width: fit-content;
     text-align: center;
     padding: 16px 0px;
     display: flex;
