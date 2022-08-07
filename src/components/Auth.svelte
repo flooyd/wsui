@@ -26,6 +26,7 @@
 
   button {
     min-width: 120px;
+    font-size: 13px;
     padding: 8px 5px;
     width: fit-content;
     margin: 0 auto;

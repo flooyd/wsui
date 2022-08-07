@@ -114,6 +114,7 @@
 
   .eventButton {
     cursor: pointer;
+    width: fit-content;
   }
 
   .property span {

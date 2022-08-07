@@ -25,6 +25,7 @@
   .name {
     background: white;
     padding: 8px;
+    font-size: 13px;
     cursor: pointer;
   }
 

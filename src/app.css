@@ -87,7 +87,7 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 16px;
+  font-size: 13px;
   font: inherit;
   vertical-align: baseline;
   font-family: "Open Sans", sans-serif;
@@ -133,11 +133,11 @@ table {
 }
 button {
   background: white;
-  min-width: 120px;
   color: black;
   padding: 8px 5px;
   border: 1px solid #333;
   border-radius: 5px;
+  font-size: 13px;
 }
 button:hover {
   background: #55f;

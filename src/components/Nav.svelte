@@ -1,10 +1,12 @@
 <script>
   import showHome from "../stores/home";
   import loginOrRegister from "../stores/auth";
+  import { currentRequest } from "../stores/requests";
 
   const clickHome = () => {
     $showHome = true;
     $loginOrRegister = null;
+    $currentRequest = null;
   };
 </script>
 
