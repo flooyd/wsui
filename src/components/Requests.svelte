@@ -8,7 +8,7 @@
   const populateCurrentRequest = (request, i) => {
     $currentRequest = request;
     $currentRequest.i = i;
-    console.log(request);
+    request;
   };
 </script>
 

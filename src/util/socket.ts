@@ -1,9 +1,9 @@
 import ioClient from "socket.io-client";
 
 export default function createClient(ENDPOINT) {
-  console.log(ENDPOINT);
+  ENDPOINT;
   const client = ioClient(ENDPOINT);
-  console.log(client);
+  client;
   client.connect();
 
   return client;

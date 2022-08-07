@@ -30,7 +30,7 @@
 
   const connect = () => {
     $socket = createClient($currentRequest.ws);
-    console.log("connected");
+    ("connected");
   };
 
   onMount(() => {
@@ -57,7 +57,7 @@
     date = new Date(Date.now());
   };
 
-  $: console.log(content);
+  $: content;
 </script>
 
 <div class="container">
@@ -95,28 +95,27 @@
     </div>
   </div>
 </div>
-{#if !$manage}
-  <div class="container">
-    <div class="header" role="heading">
-      <h1>response</h1>
-      <button>manage</button>
-    </div>
-    <div>
-      <div class="response">
-        <div class="json">
-          <div class="editor">
-            <!-- <JSONEditor bind:content /> -->
-          </div>
-          {#if response}
-            <JsonView json={response} />
-          {/if}
+{#if $manage}
+  <ManageRequest />
+{/if}
+<div class="container">
+  <div class="header" role="heading">
+    <h1>response</h1>
+    <button>manage</button>
+  </div>
+  <div>
+    <div class="response">
+      <div class="json">
+        <div class="editor">
+          <!-- <JSONEditor bind:content /> -->
         </div>
+        {#if response}
+          <JsonView json={response} />
+        {/if}
       </div>
     </div>
   </div>
-{:else}
-  <ManageRequest />
-{/if}
+</div>
 
 <style>
   .container {
