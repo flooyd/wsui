@@ -12,16 +12,12 @@
   };
 
   let initialized = false;
+  let connected = false;
   let response = null;
-  let date = null;
-  let name,
-    ws,
-    listeners,
-    events = null;
 
   const requests = () => {
     $currentRequest = null;
-    $socket = null;
+    $socket = undefined;
   };
 
   const manageRequest = () => {
@@ -30,7 +26,6 @@
 
   const connect = () => {
     $socket = createClient($currentRequest.ws);
-    ("connected");
   };
 
   onMount(() => {
@@ -41,9 +36,16 @@
     $socket = null;
   });
 
+  $: if ($currentRequest) {
+    connect();
+  }
+
   $: if ($socket && !initialized) {
     $socket.on("message", () => (response = data));
-    $socket.on("connect", () => (response = { message: "connected 😎" }));
+    $socket.on("connect", () => {
+      response = { message: "connected 😎" };
+      connected = true;
+    });
     $socket.on("createThing", (data) => (response = data));
     $socket.on("findAllThings", (data) => (response = data));
     $socket.on("deleteThings", (data) => (response = data));
@@ -104,24 +106,26 @@
 {#if $manage}
   <ManageRequest />
 {/if}
-<div class="container">
-  <div class="header" role="heading">
-    <h1>response</h1>
-    <button>manage</button>
-  </div>
-  <div>
-    <div class="response">
-      <div class="json">
-        <div class="editor">
-          <!-- <JSONEditor bind:content /> -->
+{#if connected}
+  <div class="container">
+    <div class="header" role="heading">
+      <h1>response</h1>
+      <button>manage</button>
+    </div>
+    <div>
+      <div class="response">
+        <div class="json">
+          <div class="editor">
+            <!-- <JSONEditor bind:content /> -->
+          </div>
+          {#if response}
+            <JsonView json={response} />
+          {/if}
         </div>
-        {#if response}
-          <JsonView json={response} />
-        {/if}
       </div>
     </div>
   </div>
-</div>
+{/if}
 
 <style>
   .container {

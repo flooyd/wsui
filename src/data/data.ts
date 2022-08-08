@@ -14,11 +14,11 @@ export const data = {
         { name: "deleteThings" },
       ],
     },
-    {
-      name: "my official server",
-      ws: "ws://localhost:3000/officialserver",
-      events: [],
-      listeners: [],
-    },
+    // {
+    //   name: "my official server",
+    //   ws: "ws://localhost:3000/officialserver",
+    //   events: [],
+    //   listeners: [],
+    // },
   ],
 };

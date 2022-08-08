@@ -1,20 +1,28 @@
 <script>
+  import { onMount } from "svelte";
+
   import { currentRequest, manage } from "../stores/requests";
 
-  const objToPrepare = $currentRequest;
+  let objToPrepare = JSON.parse(JSON.stringify($currentRequest));
+  let dirty = false;
+
+  onMount(() => {
+    objToPrepare = JSON.parse(JSON.stringify($currentRequest));
+  });
 
   const removeEvent = (i) => {
+    dirty = true;
     objToPrepare.events.splice(i, 1);
     objToPrepare = objToPrepare;
   };
 
   const removeListener = (i) => {
+    dirty = true;
     objToPrepare.listeners.splice(i, 1);
     objToPrepare = objToPrepare;
   };
 
   const apply = () => {
-    console.log("apply");
     $currentRequest = objToPrepare;
   };
 </script>
@@ -22,18 +30,28 @@
 <div class="container">
   <div class="header" role="heading">
     <h1>manage request</h1>
-    <button on:click={() => apply()}>apply</button>
-    <button on:click={() => ($manage = false)}>done</button>
+    {#if dirty}
+      <button on:click={() => apply()}>apply</button>
+      <button on:click={() => ($manage = false)}>discard and close</button>
+    {/if}
   </div>
   <div>
     <div class="manage">
       <div class="property">
         <span class="bold">name: </span>
-        <input class="longInput" bind:value={objToPrepare.name} />
+        <input
+          class="longInput"
+          bind:value={objToPrepare.name}
+          on:input={() => (dirty = true)}
+        />
       </div>
       <div class="property">
         <span class="bold">ws: </span>
-        <input class="longInput" bind:value={objToPrepare.ws} />
+        <input
+          class="longInput"
+          bind:value={objToPrepare.ws}
+          on:input={() => (dirty = true)}
+        />
       </div>
       <div class="property events">
         <span class="bold">events: </span>
