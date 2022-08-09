@@ -205,5 +205,6 @@
   textarea {
     width: calc(100% - 8px);
     height: 200px;
+    padding: 8px;
   }
 </style>
