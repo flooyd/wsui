@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   import { data } from "../data/data";
 
   import requests, { currentRequest } from "../stores/requests";
@@ -10,6 +12,10 @@
     $currentRequest.i = i;
     request;
   };
+
+  onMount(() => {
+    populateCurrentRequest($requests[0], 0);
+  });
 </script>
 
 <h1>select a request</h1>

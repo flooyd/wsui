@@ -56,7 +56,6 @@
     name === "createThing" ? $socket.emit(name, { blah: 7, xd: 5 }) : null;
     name === "deleteThings" ? $socket.emit(name, { number: 77 }) : null;
     name === "findAllThings" ? $socket.emit(name) : null;
-    //date = new Date(Date.now());
   };
 
   $: content;
@@ -110,7 +109,6 @@
   <div class="container">
     <div class="header" role="heading">
       <h1>response</h1>
-      <button>manage</button>
     </div>
     <div>
       <div class="response">
