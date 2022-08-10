@@ -155,7 +155,7 @@
   .response {
     background: white;
     margin-bottom: 20px;
-    border: 3px solid #333;
+
     font-size: 13px;
   }
 

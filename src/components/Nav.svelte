@@ -23,7 +23,7 @@
     position: fixed;
     top: 0px;
     width: 100%;
-    border-bottom: 3px solid #333;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,10 +41,9 @@
     background: white;
     color: black;
     padding: 5px 8px;
-    border-radius: 5px;
+
     margin-left: 25px;
     cursor: pointer;
-    border: 1px solid #333;
   }
 
   .settings:hover {

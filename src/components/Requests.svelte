@@ -26,7 +26,6 @@
 <style>
   .container {
     margin: 0 auto;
-    border: 3px solid #333;
   }
   .name {
     background: white;

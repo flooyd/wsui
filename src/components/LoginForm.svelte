@@ -27,7 +27,9 @@
 
 <h1>login to wsui</h1>
 <form on:submit={(e) => handleSubmit(e)}>
-  <p>need an account? <span class="click"><button>create account</button></span></p>
+  <p>
+    need an account? <span class="click"><button>create account</button></span>
+  </p>
   <div class="field">
     <label for="email">email</label>
     <input type="email" bind:value={email} />
@@ -52,7 +54,6 @@
 
 <style>
   form {
-    border: 3px solid #333;
     background: white;
     width: fit-content;
     padding: 8px;
@@ -76,7 +77,6 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 8px;
-    border-bottom: 3px solid lightblue;
   }
 
   .error {
@@ -86,7 +86,6 @@
   }
 
   p.error {
-    border: none;
     color: #55f;
   }
 
