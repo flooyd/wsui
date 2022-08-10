@@ -10,12 +10,7 @@
   const populateCurrentRequest = (request, i) => {
     $currentRequest = request;
     $currentRequest.i = i;
-    request;
   };
-
-  onMount(() => {
-    populateCurrentRequest($requests[0], 0);
-  });
 </script>
 
 <h1>select a request</h1>

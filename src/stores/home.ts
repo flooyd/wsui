@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 
-const showHome = writable(false);
+const showHome = writable(true);
 
 showHome.subscribe((value) => value);
 

@@ -11,7 +11,6 @@
     json: undefined,
   };
 
-  let initialized = false;
   let connected = false;
   let response = null;
 
@@ -28,37 +27,46 @@
     $socket = createClient($currentRequest.ws);
   };
 
-  onMount(() => {
-    connect();
-  });
-
   onDestroy(() => {
     $socket = null;
   });
 
-  $: if ($currentRequest) {
+  onMount(() => {
     connect();
-  }
+  });
 
-  $: if ($socket && !initialized) {
-    $socket.on("message", () => (response = data));
-    $socket.on("connect", () => {
-      response = { message: "connected 😎" };
+  $: if ($currentRequest && $socket) {
+    console.log("socket");
+    $socket.on("selfConnect", (data) => {
+      response = { message: data };
       connected = true;
     });
     $socket.on("createThing", (data) => (response = data));
+    $socket.on("createRequest", (data) => {
+      response = data;
+    });
     $socket.on("findAllThings", (data) => (response = data));
     $socket.on("deleteThings", (data) => (response = data));
-    initialized = true;
+    $socket.onAny((event, data) => {
+      if (event === "message") {
+        $socket.close();
+        if (JSON.parse(data)) {
+          console.log(JSON.parse(data).message);
+          response = { error: JSON.parse(data).message };
+        } else {
+          console.log(data);
+        }
+      }
+    });
   }
 
   const emitEvent = (name) => {
-    name === "createThing" ? $socket.emit(name, { blah: 7, xd: 5 }) : null;
+    name === "createThing"
+      ? $socket.emit("createRequest", { blah: 7, xd: 5 })
+      : null;
     name === "deleteThings" ? $socket.emit(name, { number: 77 }) : null;
     name === "findAllThings" ? $socket.emit(name) : null;
   };
-
-  $: content;
 </script>
 
 <div class="container">
