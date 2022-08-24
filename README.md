@@ -1,3 +1,5 @@
+https://wsui.vercel.app
+
 Svelte WebSocket testing UI
 
 Provides a demo by connecting to a NestJS server which listens and responds (emits) to three events.
