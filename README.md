@@ -1,4 +1,4 @@
-https://wsui.vercel.app (the back end is hosted using Heroku and may be asleep. Give it a minute to wake up to see functionality
+https://wsui.vercel.app - The back end is hosted using Heroku and may be asleep. Please allow it a minute to wake up to see functionality.
 
 Svelte WebSocket testing UI
 
